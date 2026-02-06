@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简工具导航</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #38bdf8;
+            --hover-bg: rgba(56, 189, 248, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-dim);
+        }
+
+        /* 搜索框风格 */
+        .search-area {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--card-bg);
+            color: white;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+
+        /* 分类标题 */
+        .category-title {
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem;
+            display: flex;
+            align-items: center;
+            color: var(--accent);
+        }
+
+        .category-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 15px;
+        }
+
+        /* 网格布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* 工具卡片样式 */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: var(--hover-bg);
+            border-color: var(--accent);
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .card-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* 简单响应式 */
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>My Toolbox</h1>
+        <p>精选效率工具，即点即用</p>
+    </header>
+
+    <div class="search-area">
+        <input type="text" class="search-input" placeholder="搜索本地工具..." id="searchInput">
+    </div>
+
+    <h2 class="category-title">开发与技术</h2>
+    <div class="grid">
+        <a href="https://github.com" class="card" target="_blank">
+            <div class="card-icon">🐙</div>
+            <div class="card-name">GitHub</div>
+            <div class="card-desc">全球最大的开源代码托管平台</div>
+        </a>
+        <a href="https://stackoverflow.com" class="card" target="_blank">
+            <div class="card-icon">💬</div>
+            <div class="card-name">Stack Overflow</div>
+            <div class="card-desc">解决编程问题的圣地</div>
+        </a>
+        <a href="https://tinypng.com" class="card" target="_blank">
+            <div class="card-icon">🐼</div>
+            <div class="card-name">TinyPNG</div>
+            <div class="card-desc">智能图片压缩工具</div>
+        </a>
+    </div>
+
+    <h2 class="category-title">AI 智能</h2>
+    <div class="grid">
+        <a href="https://chatgpt.com" class="card" target="_blank">
+            <div class="card-icon">🤖</div>
+            <div class="card-name">ChatGPT</div>
+            <div class="card-desc">强大的 AI 聊天与文本生成</div>
+        </a>
+        <a href="https://claude.ai" class="card" target="_blank">
+            <div class="card-icon">✍️</div>
+            <div class="card-name">Claude</div>
+            <div class="card-desc">逻辑缜密的长文本 AI</div>
+        </a>
+        <a href="https://deepseek.com" class="card" target="_blank">
+            <div class="card-icon">🧠</div>
+            <div class="card-name">DeepSeek</div>
+            <div class="card-desc">高性能国产开源大模型</div>
+        </a>
+    </div>
+
+    <h2 class="category-title">日常办公</h2>
+    <div class="grid">
+        <a href="https://notion.so" class="card" target="_blank">
+            <div class="card-icon">📓</div>
+            <div class="card-name">Notion</div>
+            <div class="card-desc">一体化笔记与协作工作区</div>
+        </a>
+        <a href="https://canva.com" class="card" target="_blank">
+            <div class="card-icon">🎨</div>
+            <div class="card-name">Canva</div>
+            <div class="card-desc">零基础在线设计工具</div>
+        </a>
+    </div>
+
+    <footer>
+        &copy; 2026 个人导航站 · Keep simple, stay focused.
+    </footer>
+</div>
+
+<script>
+    // 简单的搜索过滤功能
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        cards.forEach(card => {
+            const name = card.querySelector('.card-name').textContent.toLowerCase();
+            const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+            if (name.includes(term) || desc.includes(term)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
